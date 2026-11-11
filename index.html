@@ -196,7 +196,9 @@ form.edit .wide{grid-column:1/-1}
 'use strict';
 const LS_KEY='sucessao-tjpa-rascunho-v1';
 let D = clone(window.DADOS);
-try{ const r=localStorage.getItem(LS_KEY); if(r){ const p=JSON.parse(r); if(p && p.eventos){ D=p; } } }catch(e){}
+try{ const r=localStorage.getItem(LS_KEY); if(r){ const p=JSON.parse(r);
+  // o rascunho só prevalece se for mais novo do que o dados.js publicado
+  if(p && p.eventos && (p.meta.versao||1) > (window.DADOS.meta.versao||1)){ D=p; } else { localStorage.removeItem(LS_KEY); } } }catch(e){}
 
 const TIPO_ORDER=["ORIG","APOS","FALEC","SAIDA","DEIXA","CESSA","VAGA","CONV","ASSUME","LEVA","PARCIAL","EQUAL","REDIST"];
 const SAI=new Set(["DEIXA","APOS","FALEC","SAIDA"]);
@@ -225,10 +227,10 @@ function build(){
     for(const e of evs){
       switch(e.tipo){
         case 'ORIG': case 'ASSUME': st.titular=e.magistrado; st.convocado=null; st.orgao=e.orgao||st.orgao; st.status='ativo'; st.ultimoTitular=e.magistrado; st.base=e; break;
-        case 'CONV': st.convocado=e.magistrado; if(e.orgao) st.orgao=e.orgao; if(st.status==='inexistente') st.status='vago'; st.base=e; break;
+        case 'CONV': if(st.titular===e.magistrado) break; st.convocado=e.magistrado; if(e.orgao) st.orgao=e.orgao; if(st.status==='inexistente') st.status='vago'; st.base=e; break;
         case 'CESSA': if(st.convocado===e.magistrado) st.convocado=null; break;
         case 'LEVA': st.orgao=e.orgao; st.base=e; break;
-        case 'DEIXA': case 'APOS': case 'FALEC': case 'SAIDA': if(st.titular===e.magistrado){st.titular=null;} st.status='vago'; break;
+        case 'DEIXA': case 'APOS': case 'FALEC': case 'SAIDA': if(st.titular===e.magistrado){st.titular=null; st.status='vago';} else if(st.convocado===e.magistrado){st.convocado=null;} else {st.status='vago';} break;
         case 'REDIST': st.status='redistribuido'; st.titular=null; st.convocado=null; break;
         case 'VAGA': st.orgao=e.orgao; st.status='vago'; break;
         case 'EQUAL': case 'PARCIAL': alerts.push(e); break;
@@ -346,8 +348,12 @@ function onFicha(ev){
 function renderComposicao(){
   const A=build(); const out=document.getElementById('comp-out'); const cods=Object.keys(D.orgaos).filter(c=>!/CCI$/.test(c));
   out.innerHTML=cods.map(c=>{
-    const acs=Object.values(A).filter(ac=>ac.atual.orgao===c&&ac.atual.status!=='redistribuido'&&ac.atual.status!=='inexistente');
-    const rows=acs.map(ac=>{const s=situacaoAtual(ac); const quem=ac.atual.titular?curtoT(ac.atual.titular,'T')+(ac.atual.convocado?` + ${curtoT(ac.atual.convocado,'C')}`:''):(ac.atual.convocado?curtoT(ac.atual.convocado,'C'):'Vago'); return `<div class="row"><span><b>${esc(quem)}</b><br><span class="small muted">${esc(ac.rotulo)}</span></span><span class="pill ${s.classe}">${esc(s.pill)}</span></div>`;}).join('');
+    const acs=Object.values(A).filter(ac=>ac.atual.orgao===c&&ac.atual.status!=='redistribuido'&&ac.atual.status!=='inexistente'&&(ac.atual.titular||ac.atual.convocado||ac.atual.ultimoTitular));
+    // agrupa por responsável: um magistrado pode responder por mais de um acervo no mesmo órgão
+    const grupos=new Map();
+    acs.forEach(ac=>{const s=situacaoAtual(ac); const quem=ac.atual.titular?curtoT(ac.atual.titular,'T')+(ac.atual.convocado?` + ${curtoT(ac.atual.convocado,'C')}`:''):(ac.atual.convocado?curtoT(ac.atual.convocado,'C'):'Vago · '+(ac.atual.ultimoTitular?'último titular '+curtoT(ac.atual.ultimoTitular,'T'):'')); const k=quem+'|'+s.pill; if(!grupos.has(k)) grupos.set(k,{quem,s,rot:[]}); grupos.get(k).rot.push(ac.rotulo);});
+    const ordem={'Titular':0,'Vago · convocado':1,'Vago':2};
+    const rows=[...grupos.values()].sort((a,b)=>(ordem[a.s.pill]||0)-(ordem[b.s.pill]||0)||a.quem.localeCompare(b.quem,'pt')).map(g=>`<div class="row"><span><b>${esc(g.quem)}</b><br><span class="small muted">${esc(g.rot.join(' · '))}</span></span><span class="pill ${g.s.classe}">${esc(g.s.pill)}</span></div>`).join('');
     return `<div class="card org"><h3>${esc(D.orgaos[c])}</h3>${rows||'<p class="muted small">Nenhum acervo registrado.</p>'}</div>`;
   }).join('');
 }
@@ -389,19 +395,19 @@ function onSalvar(ev){
   if(mag&&!D.magistrados.some(m=>m.nome===mag)){ const gen=(document.querySelector('input[name=gen]:checked')||{}).value||'M'; const parts=mag.split(/\s+/); D.magistrados.push({nome:mag,genero:gen,curto:parts.length>2?parts[0]+' '+parts[parts.length-1]:mag}); }
   const e={id:g('ed-id'),data:g('ed-data'),portaria:g('ed-port'),tipo:g('ed-tipo'),magistrado:mag,condicao:g('ed-cond'),orgao:g('ed-org'),acervo,obs:g('ed-obs'),validar:g('ed-val')};
   if(e.id){ const i=D.eventos.findIndex(x=>x.id===e.id); D.eventos[i]=e; } else { let n=D.eventos.length+1; e.id='E'+String(n).padStart(3,'0'); while(D.eventos.some(x=>x.id===e.id)) e.id='E'+String(++n).padStart(3,'0'); D.eventos.push(e); }
-  D.meta.versao=(D.meta.versao||1)+0; salvarRascunho(); fillSelects(); clearEdit(); renderTabela(); renderPendencias(); renderComposicao();
+  if((D.meta.versao||1) <= (window.DADOS.meta.versao||1)) D.meta.versao=(window.DADOS.meta.versao||1)+1; salvarRascunho(); fillSelects(); clearEdit(); renderTabela(); renderPendencias(); renderComposicao();
 }
-function excluir(id){ D.eventos=D.eventos.filter(x=>x.id!==id); salvarRascunho(); renderTabela(); renderPendencias(); renderComposicao(); }
+function excluir(id){ D.eventos=D.eventos.filter(x=>x.id!==id); if((D.meta.versao||1) <= (window.DADOS.meta.versao||1)) D.meta.versao=(window.DADOS.meta.versao||1)+1; salvarRascunho(); renderTabela(); renderPendencias(); renderComposicao(); }
 function renderTabela(){
   const f=norm(document.getElementById('ed-filter').value); const evs=D.eventos.slice().sort(cmp).filter(e=>!f||norm([e.magistrado,e.portaria,e.acervo,acervoRotulo(e.acervo),e.obs].join(' ')).includes(f));
   document.getElementById('ed-table').innerHTML=`<p class="small muted">${evs.length} de ${D.eventos.length} eventos</p><table><thead><tr><th>ID</th><th>Data</th><th>Tipo</th><th>Magistrado</th><th>Órgão</th><th>Acervo</th><th>Portaria</th><th></th></tr></thead><tbody>${evs.map(e=>`<tr${e.validar?' style="background:var(--warn-soft)"':''}><td class="mono">${esc(e.id)}</td><td class="mono">${esc(fmtData(e.data))}</td><td>${esc(e.tipo)}</td><td>${esc(e.magistrado?curtoT(e.magistrado,e.condicao):'')}</td><td>${esc(e.orgao||'')}</td><td title="${esc(acervoRotulo(e.acervo))}">${esc(e.acervo)}</td><td class="mono">${esc(e.portaria)}</td><td style="white-space:nowrap"><button class="small ghost" data-e="${esc(e.id)}">Editar</button> <button class="small danger" data-x="${esc(e.id)}">Excluir</button></td></tr>`).join('')}</tbody></table>`;
   document.querySelectorAll('#ed-table [data-e]').forEach(b=>b.onclick=()=>loadEdit(b.dataset.e));
   document.querySelectorAll('#ed-table [data-x]').forEach(b=>b.onclick=()=>{ if(b.dataset.confirm){ excluir(b.dataset.x);} else { b.dataset.confirm='1'; b.textContent='Confirmar exclusão'; setTimeout(()=>{b.dataset.confirm='';b.textContent='Excluir';},4000);} });
 }
-function exportText(){ const d=clone(D); d.meta.gerado_em=new Date().toISOString().slice(0,10); d.meta.versao=(d.meta.versao||1)+1; return "// Fonte de dados da aplicação de sucessão de acervos (TJPA).\n// Gerado pela aba Edição em "+d.meta.gerado_em+".\nwindow.DADOS = "+JSON.stringify(d,null,1)+";\n"; }
+function exportText(){ const d=clone(D); d.meta.gerado_em=new Date().toISOString().slice(0,10); return "// Fonte de dados da aplicação de sucessão de acervos (TJPA).\n// Gerado pela aba Edição em "+d.meta.gerado_em+".\nwindow.DADOS = "+JSON.stringify(d,null,1)+";\n"; }
 function onExport(){ const t=exportText(); try{ const b=new Blob([t],{type:'text/javascript'}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='dados.js'; document.body.appendChild(a); a.click(); a.remove(); }catch(e){} const ta=document.getElementById('export-area'); ta.hidden=false; ta.value=t; }
 function onCopy(){ const t=exportText(); const ta=document.getElementById('export-area'); ta.hidden=false; ta.value=t; const done=()=>{document.getElementById('btn-copy').textContent='Copiado'; setTimeout(()=>document.getElementById('btn-copy').textContent='Copiar conteúdo',2000);}; if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done,()=>{ta.focus();ta.select();}); } else { ta.focus(); ta.select(); } }
-function onImport(ev){ const f=ev.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ let txt=String(r.result); const i=txt.indexOf('{'); const j=txt.lastIndexOf('}'); const p=JSON.parse(txt.slice(i,j+1)); if(!p.eventos||!p.acervos) throw new Error('estrutura'); D=p; salvarRascunho(); fillSelects(); renderAll(); }catch(e){ document.getElementById('export-area').hidden=false; document.getElementById('export-area').value='Arquivo inválido: esperado dados.js ou JSON com as chaves eventos, acervos, magistrados, orgaos, tipos.'; } }; r.readAsText(f,'utf-8'); ev.target.value=''; }
+function onImport(ev){ const f=ev.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ let txt=String(r.result); const i=txt.indexOf('{'); const j=txt.lastIndexOf('}'); const p=JSON.parse(txt.slice(i,j+1)); if(!p.eventos||!p.acervos) throw new Error('estrutura'); D=p; if((D.meta.versao||1) <= (window.DADOS.meta.versao||1)) D.meta.versao=(window.DADOS.meta.versao||1)+1; salvarRascunho(); fillSelects(); renderAll(); }catch(e){ document.getElementById('export-area').hidden=false; document.getElementById('export-area').value='Arquivo inválido: esperado dados.js ou JSON com as chaves eventos, acervos, magistrados, orgaos, tipos.'; } }; r.readAsText(f,'utf-8'); ev.target.value=''; }
 function onDiscard(){ const b=document.getElementById('btn-discard'); if(!b.dataset.confirm){ b.dataset.confirm='1'; b.textContent='Confirmar: descartar e voltar ao dados.js publicado'; setTimeout(()=>{b.dataset.confirm='';b.textContent='Descartar rascunho';},5000); return; } try{localStorage.removeItem(LS_KEY);}catch(e){} D=clone(window.DADOS); b.dataset.confirm=''; b.textContent='Descartar rascunho'; fillSelects(); renderAll(); }
 
 /* ---------- navegação ---------- */
@@ -426,4 +432,3 @@ document.getElementById('q-mag').value='Kédima Pacífico Lyra'; document.getEle
 </script>
 </body>
 </html>
-
