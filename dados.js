@@ -1,10 +1,10 @@
 // Fonte de dados da aplicação de sucessão de acervos (TJPA).
-// Gere um novo arquivo pela aba Edição da aplicação ou edite manualmente.
+// Gerado pela aba Edição em 2026-11-11.
 window.DADOS = {
  "meta": {
   "fonte": "MOVIMENTAÇÃO DE DESEMBARGADORES - NOVEMBRO 2026 (atualizada até 21/07/2026)",
   "gerado_em": "2026-11-11",
-  "versao": 1
+  "versao": 2
  },
  "orgaos": {
   "1TPRIV": "1ª Turma de Direito Privado",
@@ -531,16 +531,16 @@ window.DADOS = {
  ],
  "eventos": [
   {
-   "data": "2012",
-   "portaria": "",
+   "id": "E001",
+   "data": "2017",
+   "portaria": "Port.0142/2017-GP",
    "tipo": "ASSUME",
    "magistrado": "Roberto Gonçalves de Moura",
    "condicao": "T",
    "orgao": "3CCI",
    "acervo": "A20",
    "obs": "Lotado na 3ª Câmara Cível no acervo da Desa. Maria Rita.",
-   "validar": "Portaria não consta na planilha.",
-   "id": "E001"
+   "validar": ""
   },
   {
    "data": "2013",
@@ -555,28 +555,28 @@ window.DADOS = {
    "id": "E002"
   },
   {
-   "data": "2013",
-   "portaria": "",
+   "id": "E003",
+   "data": "2017",
+   "portaria": "Port.0142/2017-GP",
    "tipo": "LEVA",
    "magistrado": "Roberto Gonçalves de Moura",
    "condicao": "T",
    "orgao": "2CCI",
    "acervo": "A20",
    "obs": "Ao ir para a 2ª Câmara Cível levou consigo o acervo.",
-   "validar": "Data e portaria não constam na planilha.",
-   "id": "E003"
+   "validar": ""
   },
   {
-   "data": "2016",
-   "portaria": "",
+   "id": "E004",
+   "data": "2015",
+   "portaria": "Port. 2367/2015",
    "tipo": "APOS",
    "magistrado": "Elena Farag",
    "condicao": "T",
    "orgao": "3CCI",
    "acervo": "A45",
    "obs": "",
-   "validar": "Data da aposentadoria não consta.",
-   "id": "E004"
+   "validar": ""
   },
   {
    "data": "2016",
@@ -603,16 +603,16 @@ window.DADOS = {
    "id": "E006"
   },
   {
-   "data": "2017",
-   "portaria": "",
+   "id": "E007",
+   "data": "2018",
+   "portaria": "Port. 545/2018",
    "tipo": "APOS",
    "magistrado": "Marneide Trindade Pereira Merabet",
    "condicao": "T",
    "orgao": "1TPRIV",
    "acervo": "A01",
-   "obs": "",
-   "validar": "Data da aposentadoria não consta.",
-   "id": "E007"
+   "obs": "Data do ato: 05/02/2018",
+   "validar": ""
   },
   {
    "data": "2017-01",
@@ -855,6 +855,7 @@ window.DADOS = {
    "id": "E027"
   },
   {
+   "id": "E028",
    "data": "2017-12",
    "portaria": "Port. 3774/2017",
    "tipo": "ORIG",
@@ -863,8 +864,7 @@ window.DADOS = {
    "orgao": "1TPRIV",
    "acervo": "A06",
    "obs": "Assumiu a vaga da Desa. Marneide, aposentada, na 1ª Turma de Direito Privado.",
-   "validar": "A planilha diz que o Des. Constantino assumiu a VAGA da Desa. Marneide (Port. 3774/2017), mas que o ACERVO remanescente dela foi atribuído ao Juiz Conv. José Roberto (Port. 647/2018). Confirmar se o Des. Constantino iniciou acervo próprio.",
-   "id": "E028"
+   "validar": ""
   },
   {
    "data": "2017-12",
@@ -891,16 +891,16 @@ window.DADOS = {
    "id": "E030"
   },
   {
+   "id": "E031",
    "data": "2018",
-   "portaria": "",
+   "portaria": "Port. 546/2018",
    "tipo": "APOS",
    "magistrado": "Vera Araújo de Souza",
    "condicao": "T",
    "orgao": "1TPEN",
    "acervo": "A34",
-   "obs": "",
-   "validar": "Data da aposentadoria não consta.",
-   "id": "E031"
+   "obs": "Data do ato: 05/02/2018",
+   "validar": ""
   },
   {
    "data": "2018",
@@ -927,6 +927,7 @@ window.DADOS = {
    "id": "E033"
   },
   {
+   "id": "E034",
    "data": "2018",
    "portaria": "Port. 2717/2018",
    "tipo": "ASSUME",
@@ -934,9 +935,8 @@ window.DADOS = {
    "condicao": "T",
    "orgao": "1TPRIV",
    "acervo": "A01",
-   "obs": "Posse como Desembargador no acervo remanescente da Desa. Marneide.",
-   "validar": "A Port. 2717/2018 consta apenas na coluna ATO; confirmar o seu objeto.",
-   "id": "E034"
+   "obs": "Art. 2º O Desembargador José Roberto Pinheiro Maia Bezerra Júnior assumirá o acervo remanescente em nome da Desembargadora Marneide Trindade Pereira Merabet, nos termos do artigo n° 114 do Regimento Interno.",
+   "validar": ""
   },
   {
    "data": "2018",
@@ -963,7 +963,8 @@ window.DADOS = {
    "id": "E036"
   },
   {
-   "data": "2019",
+   "id": "E037",
+   "data": "2016",
    "portaria": "",
    "tipo": "ORIG",
    "magistrado": "Vânia Lúcia Carvalho da Silveira",
@@ -971,46 +972,46 @@ window.DADOS = {
    "orgao": "1TPEN",
    "acervo": "A32",
    "obs": "",
-   "validar": "Data e portaria de lotação não constam (planilha inicia em 2019).",
-   "id": "E037"
+   "validar": ""
   },
   {
-   "data": "2019",
-   "portaria": "",
+   "id": "E038",
+   "data": "2011",
+   "portaria": "Portaria 005/2011-SJ",
    "tipo": "ORIG",
    "magistrado": "Maria Edwiges de Miranda Lobato",
    "condicao": "T",
    "orgao": "1TPEN",
    "acervo": "A33",
    "obs": "",
-   "validar": "Data e portaria de lotação não constam (planilha inicia em 2019).",
-   "id": "E038"
+   "validar": ""
   },
   {
-   "data": "2019",
-   "portaria": "",
+   "id": "E039",
+   "data": "1999",
+   "portaria": "Decreto S/N",
    "tipo": "ORIG",
    "magistrado": "Milton Augusto de Brito Nobre",
    "condicao": "T",
    "orgao": "2TPEN",
    "acervo": "A36",
    "obs": "",
-   "validar": "Data e portaria de lotação não constam.",
-   "id": "E039"
+   "validar": ""
   },
   {
-   "data": "2019",
-   "portaria": "",
+   "id": "E040",
+   "data": "2000",
+   "portaria": "Ato nº. 74/2000-SG",
    "tipo": "ORIG",
    "magistrado": "Rômulo José Ferreira Nunes",
    "condicao": "T",
    "orgao": "2TPEN",
    "acervo": "A38",
    "obs": "",
-   "validar": "Data e portaria de lotação não constam.",
-   "id": "E040"
+   "validar": ""
   },
   {
+   "id": "E041",
    "data": "2019",
    "portaria": "",
    "tipo": "ORIG",
@@ -1019,22 +1020,22 @@ window.DADOS = {
    "orgao": "2TPEN",
    "acervo": "A39",
    "obs": "",
-   "validar": "Data e portaria de lotação não constam.",
-   "id": "E041"
+   "validar": ""
   },
   {
-   "data": "2019",
-   "portaria": "",
+   "id": "E042",
+   "data": "2015",
+   "portaria": "Porta. 740/2015-GP",
    "tipo": "ORIG",
    "magistrado": "Ronaldo Marques Valle",
    "condicao": "T",
    "orgao": "2TPEN",
    "acervo": "A40",
    "obs": "",
-   "validar": "Data e portaria de lotação não constam.",
-   "id": "E042"
+   "validar": ""
   },
   {
+   "id": "E043",
    "data": "2019",
    "portaria": "",
    "tipo": "ORIG",
@@ -1043,11 +1044,11 @@ window.DADOS = {
    "orgao": "3TPEN",
    "acervo": "A41",
    "obs": "",
-   "validar": "Data e portaria de lotação não constam.",
-   "id": "E043"
+   "validar": ""
   },
   {
-   "data": "2019",
+   "id": "E044",
+   "data": "2016",
    "portaria": "",
    "tipo": "ORIG",
    "magistrado": "Mairton Marques Carneiro",
@@ -1055,10 +1056,10 @@ window.DADOS = {
    "orgao": "3TPEN",
    "acervo": "A12",
    "obs": "",
-   "validar": "Data e portaria de lotação não constam.",
-   "id": "E044"
+   "validar": ""
   },
   {
+   "id": "E045",
    "data": "2019",
    "portaria": "",
    "tipo": "ORIG",
@@ -1067,56 +1068,55 @@ window.DADOS = {
    "orgao": "3TPEN",
    "acervo": "A42",
    "obs": "",
-   "validar": "Data e portaria de lotação não constam.",
-   "id": "E045"
+   "validar": ""
   },
   {
-   "data": "2019",
-   "portaria": "",
+   "id": "E046",
+   "data": "2021-11-17",
+   "portaria": "Port. 3909/2021-GP",
    "tipo": "ORIG",
    "magistrado": "Leonam Gondim da Cruz Júnior",
    "condicao": "T",
    "orgao": "3TPEN",
    "acervo": "A37",
    "obs": "",
-   "validar": "Data e portaria de lotação não constam.",
-   "id": "E046"
+   "validar": ""
   },
   {
-   "data": "2020",
+   "id": "E047",
+   "data": "2020-03-18",
    "portaria": "",
-   "tipo": "APOS",
+   "tipo": "FALEC",
    "magistrado": "Nadja Nara Cobra Meda",
    "condicao": "T",
    "orgao": "2TPUB",
    "acervo": "A28",
    "obs": "",
-   "validar": "Data da aposentadoria não consta.",
-   "id": "E047"
+   "validar": ""
   },
   {
-   "data": "2020",
-   "portaria": "",
-   "tipo": "SAIDA",
+   "id": "E048",
+   "data": "2021-09-15",
+   "portaria": "Port. 3083/2021-GP",
+   "tipo": "APOS",
    "magistrado": "Raimundo Holanda Reis",
    "condicao": "T",
    "orgao": "3TPEN",
    "acervo": "A42",
    "obs": "",
-   "validar": "Motivo e data da saída não constam.",
-   "id": "E048"
+   "validar": ""
   },
   {
-   "data": "2020",
-   "portaria": "Port. 1473/2020",
+   "id": "E049",
+   "data": "2017",
+   "portaria": "Port. 0142/2017-GP",
    "tipo": "DEIXA",
    "magistrado": "José Maria Teixeira do Rosário",
    "condicao": "T",
    "orgao": "2TPRIV",
    "acervo": "A11",
    "obs": "Transferido para a 2ª Turma de Direito Público, onde assumiu o acervo remanescente da Desa. Nadja Nara.",
-   "validar": "A planilha não diz se o Des. José Maria levou acervo próprio; inferido que deixou, pois a Desa. Eva assumiu a cadeira (Port. 1555/2020).",
-   "id": "E049"
+   "validar": ""
   },
   {
    "data": "2020",
@@ -1143,42 +1143,43 @@ window.DADOS = {
    "id": "E051"
   },
   {
-   "data": "2021",
-   "portaria": "",
-   "tipo": "APOS",
+   "id": "E052",
+   "data": "2021-04-14",
+   "portaria": "Port. 1458/2021",
+   "tipo": "FALEC",
    "magistrado": "Edinéa Oliveira Tavares",
    "condicao": "T",
    "orgao": "2TPRIV",
    "acervo": "A08",
    "obs": "",
-   "validar": "Motivo e data da saída da Desa. Edinéa não constam; inferida aposentadoria.",
-   "id": "E052"
+   "validar": ""
   },
   {
-   "data": "2021",
-   "portaria": "",
+   "id": "E053",
+   "data": "2021-12-17",
+   "portaria": "Port. 4508/2021 - gp",
    "tipo": "APOS",
    "magistrado": "Diracy Nunes Alves",
    "condicao": "T",
    "orgao": "2TPUB",
    "acervo": "A26",
    "obs": "",
-   "validar": "Data da aposentadoria não consta.",
-   "id": "E053"
+   "validar": ""
   },
   {
-   "data": "2021",
-   "portaria": "",
+   "id": "E054",
+   "data": "2021-10-27",
+   "portaria": "Port. 3650/2021-GP",
    "tipo": "APOS",
    "magistrado": "Milton Augusto de Brito Nobre",
    "condicao": "T",
    "orgao": "2TPEN",
    "acervo": "A36",
    "obs": "",
-   "validar": "Data e motivo da saída não constam; inferida aposentadoria.",
-   "id": "E054"
+   "validar": ""
   },
   {
+   "id": "E055",
    "data": "2021",
    "portaria": "Port. 4044/2021",
    "tipo": "DEIXA",
@@ -1187,8 +1188,7 @@ window.DADOS = {
    "orgao": "1TPRIV",
    "acervo": "A01",
    "obs": "Transferido para a 3ª Turma de Direito Penal, onde assumiu o acervo do Des. Milton Nobre.",
-   "validar": "A planilha não diz expressamente se o Des. José Roberto deixou o acervo na 1ª T. Privado; inferido do fato de a Desa. Margui tê-lo assumido em 2022.",
-   "id": "E055"
+   "validar": ""
   },
   {
    "data": "2021",
@@ -1203,16 +1203,16 @@ window.DADOS = {
    "id": "E056"
   },
   {
-   "data": "2021",
-   "portaria": "",
-   "tipo": "CESSA",
+   "id": "E057",
+   "data": "2022-11-17",
+   "portaria": "Port. 4181/2022",
+   "tipo": "APOS",
    "magistrado": "Altemar da Silva Paes",
    "condicao": "C",
    "orgao": "2TPEN",
    "acervo": "A39",
    "obs": "Retorno da titular.",
-   "validar": "Data do retorno da titular não consta.",
-   "id": "E057"
+   "validar": ""
   },
   {
    "data": "2021",
@@ -1287,31 +1287,32 @@ window.DADOS = {
    "id": "E063"
   },
   {
-   "data": "2022",
-   "portaria": "",
+   "id": "E064",
+   "data": "2023-05-31",
+   "portaria": "Port. 2249/2023-GP",
    "tipo": "APOS",
    "magistrado": "Maria Edwiges de Miranda Lobato",
    "condicao": "T",
    "orgao": "1TPEN",
    "acervo": "A33",
    "obs": "",
-   "validar": "Data da aposentadoria não consta.",
-   "id": "E064"
+   "validar": ""
   },
   {
-   "data": "2022",
-   "portaria": "",
+   "id": "E065",
+   "data": "2022-12-12",
+   "portaria": "Portaria 4665/2022-GP",
    "tipo": "APOS",
    "magistrado": "Ronaldo Marques Valle",
    "condicao": "T",
    "orgao": "2TPEN",
    "acervo": "A40",
    "obs": "",
-   "validar": "Data da aposentadoria não consta.",
-   "id": "E065"
+   "validar": ""
   },
   {
-   "data": "2022",
+   "id": "E066",
+   "data": "2022-01-24",
    "portaria": "Port. 173/2022",
    "tipo": "DEIXA",
    "magistrado": "Mairton Marques Carneiro",
@@ -1319,8 +1320,7 @@ window.DADOS = {
    "orgao": "3TPEN",
    "acervo": "A12",
    "obs": "Transferido para a 2ª Turma de Direito Público, onde assumiu o acervo remanescente da Desa. Diracy.",
-   "validar": "A planilha não diz se o Des. Mairton levou o próprio acervo; inferido que o deixou na 3ª T. Penal, ocupada em seguida pela Desa. Kédima.",
-   "id": "E066"
+   "validar": ""
   },
   {
    "data": "2022",
@@ -1383,16 +1383,16 @@ window.DADOS = {
    "id": "E071"
   },
   {
-   "data": "2023",
-   "portaria": "",
+   "id": "E072",
+   "data": "2023-09-15",
+   "portaria": "Port. 3999/2023-GP",
    "tipo": "APOS",
    "magistrado": "Maria de Nazaré Saavedra Guimarães",
    "condicao": "T",
    "orgao": "2TPRIV",
    "acervo": "A10",
    "obs": "",
-   "validar": "Data da aposentadoria não consta.",
-   "id": "E072"
+   "validar": ""
   },
   {
    "data": "2023",
@@ -1599,30 +1599,31 @@ window.DADOS = {
    "id": "E089"
   },
   {
-   "data": "2023-12-27",
-   "portaria": "",
+   "id": "E090",
+   "data": "2024-01-23",
+   "portaria": "Port. 291/2024-GP",
    "tipo": "CESSA",
    "magistrado": "José Antônio Ferreira Cavalcante",
    "condicao": "C",
    "orgao": "1TPEN",
    "acervo": "A32",
-   "obs": "Término dos 90 dias.",
-   "validar": "Data de término inferida (90 dias).",
-   "id": "E090"
+   "obs": "O artigo 1º da Portaria nº 291/2024-GP cessou, a partir de 16 de janeiro de 2024, os efeitos da Portaria nº 4232/2023-GP, de 27 de setembro de 2023.\n\nA convocação havia sido realizada para atuação perante o Tribunal Pleno, a Seção de Direito Penal e a 1ª Turma de Direito Penal, durante o afastamento da desembargadora Vânia Silveira",
+   "validar": ""
   },
   {
-   "data": "2024",
-   "portaria": "",
+   "id": "E091",
+   "data": "2025-07-02",
+   "portaria": "Port. 3315/2025-GP",
    "tipo": "APOS",
    "magistrado": "Maria de Nazaré Silva Gouveia dos Santos",
    "condicao": "T",
    "orgao": "2TPEN",
    "acervo": "A41",
    "obs": "",
-   "validar": "Data da aposentadoria não consta.",
-   "id": "E091"
+   "validar": ""
   },
   {
+   "id": "E092",
    "data": "2024",
    "portaria": "Port. 2251/2024",
    "tipo": "CONV",
@@ -1631,8 +1632,7 @@ window.DADOS = {
    "orgao": "3TPEN",
    "acervo": "A44",
    "obs": "Juiz convocado na 3ª Turma de Direito Penal.",
-   "validar": "A planilha registra a Port. 2251/2024 na 3ª T. Penal e um juiz convocado Sérgio Lima no acervo da Desa. Gouveia (2ª T. Penal) em 2025; confirmar se se trata do mesmo acervo.",
-   "id": "E092"
+   "validar": ""
   },
   {
    "data": "2024",
@@ -1647,16 +1647,16 @@ window.DADOS = {
    "id": "E093"
   },
   {
-   "data": "2024-08",
-   "portaria": "",
+   "id": "E094",
+   "data": "2024-07-25",
+   "portaria": "Port. 3591/2024-GP",
    "tipo": "APOS",
    "magistrado": "Maria do Céo Maciel Coutinho",
    "condicao": "T",
    "orgao": "1TPRIV",
    "acervo": "A03",
    "obs": "",
-   "validar": "Data exata da aposentadoria não consta.",
-   "id": "E094"
+   "validar": ""
   },
   {
    "data": "2024-08-07",
@@ -1707,7 +1707,8 @@ window.DADOS = {
    "id": "E098"
   },
   {
-   "data": "2025",
+   "id": "E099",
+   "data": "2025-02-21",
    "portaria": "Port. 1169/2025",
    "tipo": "CONV",
    "magistrado": "Álvaro José Norat de Vasconcelos",
@@ -1715,8 +1716,7 @@ window.DADOS = {
    "orgao": "1TPUB",
    "acervo": "A24",
    "obs": "Juiz convocado para auxílio da 1ª Turma de Direito Público.",
-   "validar": "A planilha não indica de que acervo se originou o auxílio.",
-   "id": "E099"
+   "validar": ""
   },
   {
    "data": "2025",
@@ -1731,16 +1731,16 @@ window.DADOS = {
    "id": "E100"
   },
   {
-   "data": "2025",
-   "portaria": "",
+   "id": "E101",
+   "data": "2025-07-03",
+   "portaria": "Port. 3335/2025",
    "tipo": "CONV",
    "magistrado": "Sérgio Augusto de Andrade Lima",
    "condicao": "C",
    "orgao": "2TPEN",
    "acervo": "A41",
    "obs": "Juiz convocado assumiu o acervo da Desa. Gouveia após a aposentadoria.",
-   "validar": "Portaria da convocação não consta.",
-   "id": "E101"
+   "validar": ""
   },
   {
    "data": "2025-08",
@@ -1875,7 +1875,8 @@ window.DADOS = {
    "id": "E112"
   },
   {
-   "data": "2025-08",
+   "id": "E113",
+   "data": "2025-08-20",
    "portaria": "Port. 3939/2025",
    "tipo": "LEVA",
    "magistrado": "Rosileide Maria da Costa Cunha",
@@ -1883,8 +1884,7 @@ window.DADOS = {
    "orgao": "3TPUB",
    "acervo": "A23",
    "obs": "Levará consigo a totalidade de seu acervo processual e prevenções (art. 114, I) para a 3ª Turma de Direito Público.",
-   "validar": "A planilha mantém o nome da Desa. Rosileide nas colunas de 2026 da 1ª T. Dir. Público; verificar se a vaga lá foi preenchida.",
-   "id": "E113"
+   "validar": ""
   },
   {
    "data": "2025-08",
@@ -1923,16 +1923,16 @@ window.DADOS = {
    "id": "E116"
   },
   {
-   "data": "2025-12",
-   "portaria": "",
-   "tipo": "SAIDA",
+   "id": "E117",
+   "data": "2026-01-16",
+   "portaria": "Port. 102/2026-GP",
+   "tipo": "APOS",
    "magistrado": "Rômulo José Ferreira Nunes",
    "condicao": "T",
    "orgao": "2TPEN",
    "acervo": "A38",
    "obs": "",
-   "validar": "Motivo e data da saída do Des. Rômulo não constam.",
-   "id": "E117"
+   "validar": ""
   },
   {
    "data": "2026-01",
@@ -1971,16 +1971,16 @@ window.DADOS = {
    "id": "E120"
   },
   {
-   "data": "2026-03",
-   "portaria": "",
-   "tipo": "SAIDA",
+   "id": "E121",
+   "data": "2026-02-27",
+   "portaria": "Port. 589/2026-GP",
+   "tipo": "APOS",
    "magistrado": "Sérgio Augusto de Andrade Lima",
    "condicao": "T",
    "orgao": "2TPEN",
    "acervo": "A41",
    "obs": "",
-   "validar": "Motivo e data da saída do Des. Sérgio Lima não constam (a Port. 700/2026 fala em 'preenchimento da respectiva vaga').",
-   "id": "E121"
+   "validar": ""
   },
   {
    "data": "2026-03",
@@ -1995,6 +1995,7 @@ window.DADOS = {
    "id": "E122"
   },
   {
+   "id": "E123",
    "data": "2026-03-12",
    "portaria": "Port. 700/2026",
    "tipo": "CONV",
@@ -2003,8 +2004,7 @@ window.DADOS = {
    "orgao": "1TPEN",
    "acervo": "A41",
    "obs": "Convocada para atuar perante o Pleno, a Seção de Direito Penal e a 1ª Turma de Direito Penal, a partir de 12/03/2026; atuará no acervo remanescente do Des. Sérgio Augusto de Andrade Lima até o preenchimento da vaga.",
-   "validar": "A portaria situa a convocada na 1ª T. Penal, embora o acervo do Des. Sérgio Lima fosse da 2ª T. Penal; confirmar o órgão de tramitação.",
-   "id": "E123"
+   "validar": ""
   },
   {
    "data": "2026-04",
@@ -2043,6 +2043,7 @@ window.DADOS = {
    "id": "E126"
   },
   {
+   "id": "E127",
    "data": "2026-04",
    "portaria": "Port. 1077/2026",
    "tipo": "ORIG",
@@ -2051,8 +2052,7 @@ window.DADOS = {
    "orgao": "1TPEN",
    "acervo": "A35",
    "obs": "Lotada na Seção de Direito Penal e na 1ª Turma de Direito Penal.",
-   "validar": "Confirmar se ocupa a vaga deixada pela Desa. Vânia Silveira (que levou o acervo).",
-   "id": "E127"
+   "validar": ""
   },
   {
    "data": "2026-04",
@@ -2127,16 +2127,16 @@ window.DADOS = {
    "id": "E133"
   },
   {
-   "data": "2026-04",
+   "id": "E134",
+   "data": "2026-04-22",
    "portaria": "Port. 1197/2026",
    "tipo": "ASSUME",
    "magistrado": "Patrícia Sá Moreira",
    "condicao": "T",
    "orgao": "2TPEN",
-   "acervo": "A41",
-   "obs": "Lotada na Seção de Direito Penal e na 1ª Turma de Direito Penal; assumirá o acervo remanescente em nome do Des. Sérgio Augusto de Andrade Lima perante a Seção de Direito Penal e a 2ª Turma de Direito Penal (art. 114).",
-   "validar": "A portaria lota a Desa. Patrícia na 1ª T. Penal, mas o acervo que assume é referido à 2ª T. Penal. Confirmar o órgão.",
-   "id": "E134"
+   "acervo": "A44",
+   "obs": "RESOLVE:\n\nArt. 1º Lotar, ad referendum do Tribunal Pleno, a Desembargadora Patrícia de Oliveira Sá Moreira na Seção de Direito Penal e na 1ª Turma de Direito Penal do Tribunal de Justiça do Estado do Pará.\n\nArt. 2º A Desembargadora Patrícia de Oliveira Sá Moreira assumirá o acervo remanescente em nome do Desembargador Sérgio Augusto de Andrade Lima perante o Seção de Direito Penal e a 1ª Turma de Direito Penal, nos termos do artigo 114 do Regimento Interno.\n\nArt. 3º Esta portaria entra em vigor na data de sua publicação.",
+   "validar": ""
   },
   {
    "data": "2026-04-15",
@@ -2151,6 +2151,7 @@ window.DADOS = {
    "id": "E135"
   },
   {
+   "id": "E136",
    "data": "2026-04-15",
    "portaria": "Port. 1150/2026",
    "tipo": "CONV",
@@ -2159,8 +2160,7 @@ window.DADOS = {
    "orgao": "2TPUB",
    "acervo": "A13",
    "obs": "Convocada para atuar no acervo de relatoria do Des. Edmar Silva Pereira, recebido na condição de juiz convocado (Port. 2835/2025). A planilha a situa na Seção e na 2ª Turma de Direito Público.",
-   "validar": "O acervo de auxílio foi formado na 2ª T. Dir. Privado (Port. 2835/2025), mas a Port. 1150/2026 lota a Juíza Silvana na 2ª T. Dir. Público. Confirmar o órgão em que o acervo tramita.",
-   "id": "E136"
+   "validar": ""
   },
   {
    "data": "2026-05-21",
@@ -2187,16 +2187,16 @@ window.DADOS = {
    "id": "E138"
   },
   {
-   "data": "2026-06",
-   "portaria": "",
+   "id": "E139",
+   "data": "2026-06-15",
+   "portaria": "Port. 2596/2026-GP",
    "tipo": "APOS",
    "magistrado": "Rosi Maria Gomes de Farias",
    "condicao": "T",
    "orgao": "1TPEN",
    "acervo": "A34",
    "obs": "",
-   "validar": "Data da aposentadoria não consta.",
-   "id": "E139"
+   "validar": ""
   },
   {
    "data": "2026-06-25",
